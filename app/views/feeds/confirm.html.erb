@@ -1,9 +1,11 @@
 <%= form_with(model: @feed, url: feeds_path, local: true) do |form| %>
   <!-- 確認画面でアップロードした画像を表示させるための記述 -->
   <%= image_tag(@feed.image.url) if @feed.image && @feed.image.url %>
+  <div class="box">
   <%= form.hidden_field :image_cache %>
   <%= form.text_area :content %>
   <%= form.submit "投稿する" %>
+  </div>
 <% end %>
 <%= form_with(model:@feed, url:new_feed_path, local:true, method:"get") do |form| %>
   <%= form.hidden_field :image_cache %>

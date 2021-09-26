@@ -15,12 +15,14 @@
   <tbody>
     <% @feeds.each do |feed| %>
       <tr>
-        <td><%= feed.image %></td>
+        <td><%= image_tag feed.image_url, style:'width:100px' %></td>
         <td><%= feed.content %></td>
         <td><%= feed.user.name%></td>
         <td class="padding"><%= link_to 'Show', feed %></td>
+        <% if current_user.id == feed.user.id %>
         <td class="padding"><%= link_to 'Edit', edit_feed_path(feed) %></td>
         <td class="padding"><%= link_to 'Destroy', feed, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
